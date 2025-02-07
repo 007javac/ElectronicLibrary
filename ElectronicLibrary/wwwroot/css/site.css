@@ -1,0 +1,114 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f4f6f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-container {
+    margin: 20px auto;
+}
+
+.card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.list-group-item.active {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #2c3e50 !important;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #3498db !important;
+    }
+
+.book-cover {
+    width: 150px; /* Уменьшение размера обложки */
+    height: 225px;
+    object-fit: cover;
+}
+
+.card-img-top {
+    width: 100%; 
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}

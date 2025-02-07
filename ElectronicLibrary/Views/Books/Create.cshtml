@@ -1,0 +1,85 @@
+﻿@model ElectronicLibrary.ViewModels.BookViewModel
+
+<div class="page-container">
+    <div class="card card-custom">
+        <div class="card-body">
+            <h2 class="section-title">
+                <i class="bi bi-plus-circle me-2"></i>Добавление новой книги
+            </h2>
+
+            <form asp-controller="Books" asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.Title" class="form-label">Название книги</label>
+                            <input asp-for="Book.Title" class="form-control" />
+                            <span asp-validation-for="Book.Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.Author" class="form-label">Автор</label>
+                            <input asp-for="Book.Author" class="form-control" />
+                            <span asp-validation-for="Book.Author" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.CategoryName" class="form-label">Категория</label>
+                            <select asp-for="Book.CategoryName" class="form-control">
+                                <option value="">Выберите категорию</option>
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <option value="@category.Name">@category.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Book.CategoryName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.Description" class="form-label">Описание</label>
+                            <textarea asp-for="Book.Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Book.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.CoverImageUrl" class="form-label">URL обложки</label>
+                            <input asp-for="Book.CoverImageUrl" class="form-control" />
+                            <span asp-validation-for="Book.CoverImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Book.PublicationDate" class="form-label">Дата публикации</label>
+                            <input asp-for="Book.PublicationDate" type="date" class="form-control" />
+                            <span asp-validation-for="Book.PublicationDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input asp-for="Book.IsPopular" class="form-check-input" />
+                            <label asp-for="Book.IsPopular" class="form-check-label">Популярная книга</label>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input asp-for="Book.IsNew" class="form-check-input" />
+                            <label asp-for="Book.IsNew" class="form-check-label">Новая книга</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-2"></i>Сохранить
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Назад к списку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

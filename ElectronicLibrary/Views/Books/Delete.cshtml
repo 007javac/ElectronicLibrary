@@ -1,0 +1,60 @@
+﻿@model ElectronicLibrary.Models.Book
+
+<div class="page-container">
+    <div class="card card-custom">
+        <div class="card-body">
+            <h2 class="section-title text-danger">
+                <i class="bi bi-trash me-2"></i>Удаление книги
+            </h2>
+
+            <div class="alert alert-danger">
+                <h4>Вы уверены, что хотите удалить эту книгу?</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@(Model.CoverImageUrl ?? "/images/default-book.jpg")"
+                         class="img-fluid rounded book-cover" alt="@Model.Title">
+                </div>
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-3">Название</dt>
+                        <dd class="col-sm-9">@Model.Title</dd>
+
+                        <dt class="col-sm-3">Автор</dt>
+                        <dd class="col-sm-9">@Model.Author</dd>
+
+                        <dt class="col-sm-3">Категория</dt>
+                        <dd class="col-sm-9">@Model.CategoryName</dd>
+
+                        <dt class="col-sm-3">Год публикации</dt>
+                        <dd class="col-sm-9">@Model.PublicationDate.Year</dd>
+
+                        <dt class="col-sm-3">Описание</dt>
+                        <dd class="col-sm-9">@Model.Description</dd>
+
+                        <dt class="col-sm-3">Популярная книга</dt>
+                        <dd class="col-sm-9">@(Model.IsPopular ? "Да" : "Нет")</dd>
+
+                        <dt class="col-sm-3">Новая книга</dt>
+                        <dd class="col-sm-9">@(Model.IsNew ? "Да" : "Нет")</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-2"></i>Удалить
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Назад к списку
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

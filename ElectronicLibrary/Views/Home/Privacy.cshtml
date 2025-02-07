@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Политика конфиденциальности";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-5">
+                <h1 class="card-title text-center mb-4 text-primary">
+                    <i class="bi bi-shield-lock me-2"></i>@ViewData["Title"]
+                </h1>
+
+                <div class="privacy-content">
+                    <h4 class="mb-3">Защита персональных данных</h4>
+                    <p class="text-muted">
+                        Электронная библиотека гарантирует полную конфиденциальность и безопасность личной информации пользователей.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-collection me-2"></i>Собираемые данные</h5>
+                            <ul class="list-unstyled">
+                                <li>• Информация для работы сервиса</li>
+                                <li>• Данные при регистрации</li>
+                                <li>• Статистика использования</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-primary"><i class="bi bi-gear me-2"></i>Использование данных</h5>
+                            <ul class="list-unstyled">
+                                <li>• Предоставление услуг</li>
+                                <li>• Улучшение сервиса</li>
+                                <li>• Техническая поддержка</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <p class="text-muted small">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Последнее обновление: @DateTime.Now.ToString("dd MMMM yyyy")
+                    </p>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                        <i class="bi bi-house me-2"></i>Вернуться на главную
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .privacy-content ul li {
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+
+        .privacy-content h5 {
+            margin-bottom: 1rem;
+        }
+    </style>
+}

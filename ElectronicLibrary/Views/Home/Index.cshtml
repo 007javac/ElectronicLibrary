@@ -1,0 +1,71 @@
+﻿@model ElectronicLibrary.ViewModels.CatalogViewModel
+
+<div class="container-fluid">
+    <div class="row hero-section bg-light py-5 mb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fw-bold text-primary">
+                Электронная <span class="text-secondary">Библиотека</span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="mb-4">Категории</h3>
+            <div class="list-group shadow-sm">
+                <a asp-controller="Books"
+                   asp-action="Index"
+                   class="list-group-item list-group-item-action @(string.IsNullOrEmpty(Model.SelectedCategory) ? "active" : "")">
+                    Все книги
+                </a>
+                @foreach (var category in Model.Categories)
+                {
+                    <a asp-controller="Books"
+                       asp-action="Index"
+                       asp-route-category="@category.Name"
+                       class="list-group-item list-group-item-action @(Model.SelectedCategory == category.Name ? "active" : "")">
+                        @category.Name
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h3 class="mb-4">Популярные и новые книги</h3>
+            <div class="row g-4">
+                @foreach (var book in Model.Books)
+                {
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="@(book.CoverImageUrl ?? "/images/default-book.jpg")"
+                                 class="card-img-top book-cover" alt="@book.Title">
+                            <div class="card-body">
+                                <h5 class="card-title">@book.Title</h5>
+                                <p class="card-text text-muted">@book.Author</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-secondary">
+                                        @(book.IsNew ? "Новая" : "Популярная")
+                                    </span>
+                                    <a asp-controller="Books"
+                                       asp-action="Details"
+                                       asp-route-id="@book.Id"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Подробнее
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+    </style>
+}
